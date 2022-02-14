@@ -8,8 +8,8 @@ RIA1_TDD_TRAINING est un projet permettant d'entraîner le TDD en JavaScript et 
 
 Pré-requis :
 
-* npm 6.14.13 ou ultérieure
-* node v14.17.3 ou ultérieure
+* npm 8.4.1 ou ultérieure
+* node 17.5.0 ou ultérieure
 * git version 2.34.1.windows 1 ou ultérieure
 
 Note : testé sur l'IDE WebStorm : version 2021.3.1

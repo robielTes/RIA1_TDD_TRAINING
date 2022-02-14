@@ -14,7 +14,7 @@ Pré-requis :
 
 Note : testé sur l'IDE WebStorm : version 2021.3.1
 
-Après avoir récupéré le référentiel:
+Après avoir récupéré le référentiel, *forker*-le sur un dépôt vous appartenant puis:
 
 ```
     npm install
@@ -44,9 +44,9 @@ Pour tester une seule classe :
     npm run test [className.test.js]
 ```
 
-## Prise en main du projet
+## Backlog
 
-Une fois le code récupéré, il s'agit de le *forker* sur un référentiel vous appartenant. Puis de traiter les issues dans l'ordre de publication.
+Traiter les issues dans l'ordre de publication.
 
 ## Aides
 

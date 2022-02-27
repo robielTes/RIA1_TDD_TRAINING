@@ -61,10 +61,11 @@ Voici des sources qui vous aideront à vous lancer :
   * [Les exceptions](https://jestjs.io/docs/using-matchers#exceptions)
 * [Convention de nommmage en Java Script](https://developer.mozilla.org/fr/docs/MDN/Guidelines/Code_guidelines/JavaScript)
 * [Documenter son code](https://www.jetbrains.com/help/webstorm/creating-jsdoc-comments.html)
-## Contributing
+
+## Contribuer
 Vos retours sont les bienvenus. Utilisez les pull requests pour des apports mineurs. Pour des modifications plus importantes, ouvrez une issue pour que l'on en discuter avant.
 
-## License
+## Licence
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Source 

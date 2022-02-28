@@ -14,7 +14,6 @@ module.exports = class Cart{
     items = null;
     //endregion private attributes
 
-
     /**
      * @brief This method constructs a Cart Object
      * @param items : list of cartItems
@@ -27,7 +26,7 @@ module.exports = class Cart{
      * @brief This property returns the list of CartItems presents in the Cart.
      * @exception EmptyCartException is thrown if the Cart is empty
      */
-    get items(){
+    get Items(){
         throw new Error('Method not implemented.');
     }
 
@@ -35,7 +34,7 @@ module.exports = class Cart{
      * @brief This property returns the total of the Cart.
      * @exception EmptyCartException is thrown if the Cart is empty
      */
-    get totalPrice(){
+    get TotalPrice(){
         throw new Error('Method not implemented.');
     }
     //endregion public methods

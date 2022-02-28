@@ -21,8 +21,8 @@ test('allGetters_NominalCase_Success', () => {
     //we call the getters directly in assertion below
 
     //then
-    expect(articleId).toEqual(cartItem.articleId);
-    expect(quantity).toEqual(cartItem.quantity);
-    expect(price).toEqual(cartItem.price);
-    expect(total).toEqual(cartItem.total);
+    expect(articleId).toEqual(cartItem.ArticleId);
+    expect(quantity).toEqual(cartItem.Quantity);
+    expect(price).toEqual(cartItem.Price);
+    expect(total).toEqual(cartItem.Total);
 })

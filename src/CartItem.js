@@ -22,9 +22,9 @@ module.exports = class CartItem {
      * @param articleId
      * @param quantity
      * @param price (in CHF)
-     * @exception InvalidArticleId is thrown when the article is smaller than 1.
-     * @exception InvalidArticleQuantity is thrown when the quantity is smaller than 1.
-     * @exception InvalidPrice is thrown when the price is smaller than 10.
+     * @exception InvalidArticleIdException is thrown when the article is smaller than 1.
+     * @exception InvalidArticleQuantityException is thrown when the quantity is smaller than 1.
+     * @exception InvalidPriceException is thrown when the price is smaller than 10.
      */
     constructor(articleId, quantity, price) {
         this.articleId = articleId;
@@ -34,28 +34,28 @@ module.exports = class CartItem {
     /**
      * @brief This property gets the article id
      */
-    get articleId() {
+    get ArticleId() {
         return this.articleId;
     }
 
     /**
      * @brief This property gets the quantity
      */
-    get quantity() {
+    get Quantity() {
         return this.quantity;
     }
 
     /**
      * @brief This property gets the price
      */
-    get price() {
+    get Price() {
         return this.price;
     }
 
     /**
      * @brief This property gets the total
      */
-    get total() {
+    get Total() {
         return this.quantity * this.price;
     }
     //endregion public methods

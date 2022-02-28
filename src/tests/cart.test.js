@@ -15,7 +15,7 @@ test('getTotalCart_EmptyCart_Success', () => {
     let expectedTotalPrice = 0;
 
     //when
-    actualTotalPrice = cart.totalPrice;
+    actualTotalPrice = cart.TotalPrice;
 
     //then
     expect(actualTotalPrice).toEqual(expectedTotalPrice);

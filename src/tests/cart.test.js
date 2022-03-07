@@ -16,7 +16,7 @@ test('getTotalCart_NominalCase_Success', () => {
     let cartItem2= new CartItem(2,2,20);
     let items = [cartItem1, cartItem2];
     let cart = new Cart(items);
-    let totalPriceExcepted = 30;
+    let totalPriceExcepted = 50;
 
     //when
     //we call the properties directly in assertion below

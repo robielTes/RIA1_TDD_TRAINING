@@ -11,10 +11,11 @@
 // The "pseudocode" for the built-in Error class defined by JavaScript itself
 
 const CartItemException = require("./exceptions/CartItemException.js");
+const EmptyCartException = require("./exceptions/EmptyCartException.js");
 module.exports = class Cart {
 
     //region private attributes
-    #items = null;
+    #items;
 
     //endregion private attributes
 
@@ -22,7 +23,7 @@ module.exports = class Cart {
      * @brief This method constructs a Cart Object
      * @param items : CartItem[] of cartItems
      */
-    constructor(items = null) {
+    constructor(items) {
         this.#items = items
     }
 
@@ -42,7 +43,9 @@ module.exports = class Cart {
      * @exception EmptyCartException is thrown if the Cart is empty
      */
     get TotalPrice() {
-        if (this.#items == null) return 0;
+        if (this.#items == null){
+            throw new EmptyCartException();
+        }
 
         let total = 0;
         this.#items.forEach(item => {

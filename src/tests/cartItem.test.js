@@ -7,27 +7,28 @@
 
 "use strict";
 
-let CartItem =  require('../CartItem.js');
-//import { CartItem, InvalidArticleIdException, InvalidQuantityException, InvalidPriceException} from "./../CartItem.js";
+const CartItem = require('../CartItem.js');
+const InvalidArticleIdException = require('../exceptions/InvalidArticleIdException.js');
+const InvalidQuantityException = require('../exceptions/InvalidQuantityException.js');
+const InvalidPriceException = require('../exceptions/InvalidPriceException.js');
 
-test('allGetters_NominalCase_Success',
-    () => {
-        //given
-        let articleId = 1;
-        let quantity = 10;
-        let price = 20;
-        let cartItem = new CartItem(articleId, quantity, price);
-        let total = 200;
+test('allGetters_NominalCase_Success', () => {
+    //given
+    let articleId = 1;
+    let quantity = 10;
+    let price = 20;
+    let cartItem = new CartItem(articleId, quantity, price);
+    let total = 200;
 
-        //when
-        //we call the getters directly in assertion below
+    //when
+    //we call the getters directly in assertion below
 
-        //then
-        expect(articleId).toEqual(cartItem.ArticleId);
-        expect(quantity).toEqual(cartItem.Quantity);
-        expect(price).toEqual(cartItem.Price);
-        expect(total).toEqual(cartItem.Total);
-    })
+    //then
+    expect(articleId).toEqual(cartItem.articleId);
+    expect(quantity).toEqual(cartItem.quantity);
+    expect(price).toEqual(cartItem.price);
+    expect(total).toEqual(cartItem.total);
+})
 
 test('constructor_InvalidArticleId_ThrowException', () => {
     //given
@@ -81,8 +82,8 @@ test('Quantity_SetQuantityNominalCase_Success', () => {
     cartItem.quantity = expectedQuantity;
 
     //then
-    expect(expectedQuantity).toEqual(cartItem.Quantity);
-    expect(expectedTotal).toEqual(cartItem.Total);
+    expect(expectedQuantity).toEqual(cartItem.quantity);
+    expect(expectedTotal).toEqual(cartItem.total);
 })
 
 test('Quantity_SetQuantityInvalidValue_ThrowException', () => {
@@ -113,8 +114,8 @@ test('Price_SetPriceNominalCase_Success', () => {
     cartItem.price = expectedPrice;
 
     //then
-    expect(expectedPrice).toEqual(cartItem.Price);
-    expect(expectedTotal).toEqual(cartItem.Total);
+    expect(expectedPrice).toEqual(cartItem.price);
+    expect(expectedTotal).toEqual(cartItem.total);
 })
 
 test('Price_SetPriceInvalidPrice_ThrowException', () => {

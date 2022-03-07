@@ -8,6 +8,10 @@
 
 "use strict";
 
+const InvalidArticleIdException = require('./exceptions/InvalidArticleIdException.js');
+const InvalidQuantityException = require('./exceptions/InvalidQuantityException.js');
+const InvalidPriceException = require('./exceptions/InvalidPriceException.js');
+
 module.exports = class CartItem {
 
     //region private attributes
@@ -27,22 +31,28 @@ module.exports = class CartItem {
      * @exception InvalidPriceException is thrown when the price is smaller than 10.
      */
     constructor(articleId, quantity, price) {
+        if (articleId < 1) {
+            throw new InvalidArticleIdException('The article is smaller than 1.');
+        }
+
         this.#articleId = articleId;
-        this.#quantity = quantity;
-        this.#price = price;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     /**
      * @brief This property gets the article id
+     * @return {number}
      */
-    get ArticleId() {
+    get articleId() {
         return this.#articleId;
     }
 
     /**
      * @brief This property gets the quantity
+     * @return {number}
      */
-    get Quantity() {
+    get quantity() {
         return this.#quantity;
     }
 
@@ -51,17 +61,19 @@ module.exports = class CartItem {
      * @param value, the new quantity to set
      * @exception InvalidQuantityException is thrown when the quantity is smaller than 1.
      */
-    set Quantity(value) {
+    set quantity(value) {
         if (value < 1) {
-            throw new InvalidQuantityException();
+            throw new InvalidQuantityException('The quantity is smaller than 1.');
         }
-    }
 
+        this.#quantity = value;
+    }
 
     /**
      * @brief This property gets the price
+     * @return {number}
      */
-    get Price() {
+    get price() {
         return this.#price;
     }
 
@@ -70,63 +82,27 @@ module.exports = class CartItem {
      * @param value, the new price to set
      * @exception InvalidPriceException is thrown when the price is smaller than 10.
      */
-    set Price(value) {
+    set price(value) {
         if (value < 10) {
-            throw new InvalidPriceException();
+            throw new InvalidPriceException('The price is smaller than 10.');
         }
+
+        this.#price = value;
     }
+
 
     /**
      * @brief This property gets the total
+     * @return {number}
      */
-    get Total() {
-        return this.#quantity * this.#price;
+    get total() {
+        return this.quantity * this.#price;
     }
 
     //endregion public methods
 
     //region private methods
     //endregion private methods
-}
-
-class Error {
-    #message;
-
-    constructor(message) {
-        this.#message = message;
-    }
-
-    get message() {
-        return this.#message;
-    }
-}
-
-class CartItemException extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "CartItemException";
-    }
-}
-
-class InvalidArticleIdException extends CartItemException {
-    constructor(message) {
-        super(message);
-        this.name = "CartItemException";
-    }
-}
-
-class InvalidQuantityException extends CartItemException {
-    constructor(message) {
-        super(message);
-        this.name = "InvalidQuantityException";
-    }
-}
-
-class InvalidPriceException extends CartItemException {
-    constructor(message) {
-        super(message);
-        this.name = "InvalidQuantityException";
-    }
-}
+};
 
 //export {CartItem, Error, CartItemException, InvalidQuantityException, InvalidPriceException, InvalidArticleIdException}

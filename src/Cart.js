@@ -9,26 +9,21 @@
 "use strict";
 
 // The "pseudocode" for the built-in Error class defined by JavaScript itself
-class Error {
-    constructor(message) {
-        this.message = message;
-        this.name = "Error";
-    }
-}
 
+const CartItemException = require("./exceptions/CartItemException.js");
 module.exports = class Cart {
 
     //region private attributes
-    items = null;
+    #items = null;
 
     //endregion private attributes
 
     /**
      * @brief This method constructs a Cart Object
-     * @param items : list of cartItems
+     * @param items : CartItem[] of cartItems
      */
     constructor(items = null) {
-        throw new Error('Method not implemented.');
+        this.#items = items
     }
 
     /**
@@ -36,7 +31,10 @@ module.exports = class Cart {
      * @exception EmptyCartException is thrown if the Cart is empty
      */
     get Items() {
-        throw new Error('Method not implemented.');
+        if(this.#items === null){
+            throw new CartItemException('Cart is empty');
+        }
+        return this.#items;
     }
 
     /**
@@ -44,8 +42,13 @@ module.exports = class Cart {
      * @exception EmptyCartException is thrown if the Cart is empty
      */
     get TotalPrice() {
+        if (this.#items == null) return 0;
 
-        throw new Error('expectedTotalPrice');
+        let total = 0;
+        this.#items.forEach(item => {
+            total += item.total;
+        });
+        return total;
     }
 
     //endregion public methods
@@ -53,3 +56,4 @@ module.exports = class Cart {
     //region private methods
     //endregion private methods
 }
+

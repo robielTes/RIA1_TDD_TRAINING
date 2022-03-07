@@ -8,37 +8,55 @@
 
 "use strict";
 
-module.exports = class Cart{
+// The "pseudocode" for the built-in Error class defined by JavaScript itself
+
+const CartItemException = require("./exceptions/CartItemException.js");
+const EmptyCartException = require("./exceptions/EmptyCartException.js");
+module.exports = class Cart {
 
     //region private attributes
-    items = null;
+    #items;
+
     //endregion private attributes
 
     /**
      * @brief This method constructs a Cart Object
-     * @param items : list of cartItems
+     * @param items : CartItem[] of cartItems
      */
-    constructor(items = null){
-        throw new Error('Method not implemented.');
+    constructor(items) {
+        this.#items = items
     }
 
     /**
      * @brief This property returns the list of CartItems presents in the Cart.
      * @exception EmptyCartException is thrown if the Cart is empty
      */
-    get Items(){
-        throw new Error('Method not implemented.');
+    get Items() {
+        if(this.#items === null){
+            throw new CartItemException('Cart is empty');
+        }
+        return this.#items;
     }
 
     /**
      * @brief This property returns the total of the Cart.
      * @exception EmptyCartException is thrown if the Cart is empty
      */
-    get TotalPrice(){
-        throw new Error('Method not implemented.');
+    get TotalPrice() {
+        if (this.#items == null){
+            throw new EmptyCartException();
+        }
+
+        let total = 0;
+        this.#items.forEach(item => {
+            total += item.total;
+        });
+        return total;
     }
+
     //endregion public methods
 
     //region private methods
     //endregion private methods
 }
+

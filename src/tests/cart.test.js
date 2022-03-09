@@ -66,3 +66,60 @@ test('getTotalCart_EmptyCart_ThrowException', () => {
     //Exception is thrown
 })
 
+test('count_OnlySingleQuantityProduct_Success', () => {
+    //given
+    let cartItem1 = new CartItem(1,"Iphone 27",1,10);
+    let cartItem2= new CartItem(2,"Iphone 28", 1,20);
+    let items = [cartItem1, cartItem2];
+    let cart = new Cart(items);
+    let countExpected = 2;
+
+    //when
+    //we call the property directly in assertion below
+
+    //then
+    expect(countExpected).toEqual(cart.count());
+})
+
+test('count_MixSingleAndMultipleQuantityProductSuccess', () => {
+    //given
+    let cartItem1 = new CartItem(1,"Iphone 27",1,10);
+    let cartItem2= new CartItem(2,"Iphone 28", 2,20);
+    let items = [cartItem1, cartItem2];
+    let cart = new Cart(items);
+    let countExpected = 3;
+
+    //when
+    //we call the property directly in assertion below
+
+    //then
+    expect(countExpected).toEqual(cart.count());
+})
+
+test('count_MixSingleAndMultipleQuantityProductDistinct_Success', () => {
+    //given
+    let cartItem1 = new CartItem(1,"Iphone 27",1,10);
+    let cartItem2= new CartItem(2,"Iphone 28", 2,20);
+    let items = [cartItem1, cartItem2];
+    let cart = new Cart(items);
+    let countExpected = 2;
+
+    //when
+    //we call the property directly in assertion below
+
+    //then
+    expect(countExpected).toEqual(cart.count(true));
+})
+
+test('count_EmptyCart_ThrowException', () => {
+    //given
+    let cart = new Cart(null);
+
+    //when
+    expect(() => cart.count()).toThrow(EmptyCartException);
+
+    //then
+    //Exception is thrown
+})
+
+

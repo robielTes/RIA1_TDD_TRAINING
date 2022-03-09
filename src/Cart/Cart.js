@@ -62,7 +62,16 @@ module.exports = class Cart {
      * @returns {number} : number of CartItems
      */
     count(distinct = false){
-        throw new Error();
+        if (this.items == null){
+            throw new EmptyCartException();
+        }
+
+        if(distinct) return this.items.length;
+        let total = 0;
+        this.#items.forEach(item => {
+            total += item.quantity;
+        });
+        return total;
     }
 
     /**

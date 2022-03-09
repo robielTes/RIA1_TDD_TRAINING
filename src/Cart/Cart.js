@@ -10,8 +10,8 @@
 
 // The "pseudocode" for the built-in Error class defined by JavaScript itself
 
-const CartItemException = require("./exceptions/CartItemException.js");
-const EmptyCartException = require("./exceptions/EmptyCartException.js");
+const CartItemException = require("../exceptions/CartItemException.js");
+const EmptyCartException = require("./EmptyCartException.js");
 module.exports = class Cart {
 
     //region private attributes

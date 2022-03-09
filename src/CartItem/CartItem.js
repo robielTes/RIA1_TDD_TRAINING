@@ -16,6 +16,7 @@ module.exports = class CartItem {
 
     //region private attributes
     #articleId;
+    #name
     #quantity;
     #price;
     //endregion private attributes
@@ -30,12 +31,13 @@ module.exports = class CartItem {
      * @exception InvalidArticleQuantityException is thrown when the quantity is smaller than 1.
      * @exception InvalidPriceException is thrown when the price is smaller than 10.
      */
-    constructor(articleId, quantity, price) {
+    constructor(articleId,name, quantity, price) {
         if (articleId < 1) {
             throw new InvalidArticleIdException('The article is smaller than 1.');
         }
 
         this.#articleId = articleId;
+        this.#name = name;
         this.quantity = quantity;
         this.price = price;
     }
@@ -46,6 +48,13 @@ module.exports = class CartItem {
      */
     get articleId() {
         return this.#articleId;
+    }
+
+    /**
+     * @brief This property gets the article's name
+     */
+    get name() {
+        return this.#name;
     }
 
     /**

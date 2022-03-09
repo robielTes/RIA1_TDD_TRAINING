@@ -11,19 +11,48 @@ const CartItem = require("../CartItem/CartItem.js");
 const EmptyCartException = require("../Cart/EmptyCartException.js");
 const UpdateCartException = require("../Cart/UpdateCartException.js");
 
-test('getTotalCart_NominalCase_Success', () => {
+test('items_NominalCase_Success', () => {
     //given
-    let cartItem1 = new CartItem(1,1,10);
-    let cartItem2= new CartItem(2,2,20);
-    let items = [cartItem1, cartItem2];
-    let cart = new Cart(items);
-    let totalPriceExcepted = 50;
+    let cartItem1 = new CartItem(1,"Iphone 27", 1,10);
+    let cartItem2= new CartItem(2,"Iphone 28",2,20);
+    let expectedItems = [cartItem1, cartItem2];
+    let actualItems = null;
+    let cart = new Cart(expectedItems);
 
     //when
-    //we call the properties directly in assertion below
+    actualItems = cart.items;
 
     //then
-    expect(totalPriceExcepted).toEqual(cart.TotalPrice);
+    for (let i = 0 ; i <= expectedItems.length ; i++)
+    {
+        expect(expectedItems[i]).toEqual(actualItems[i]);
+    }
+})
+
+test('items_EmptyCart_ThrowException', () => {
+    //given
+    let cart = new Cart(null);
+
+    //when
+    expect(() => cart.items).toThrow(EmptyCartException);
+
+    //then
+    //Exception is thrown
+})
+
+test('getTotalCart_NominalCase_Success', () => {
+    //given
+    let cartItem1 = new CartItem(1,"Iphone 27",1,10);
+    let cartItem2= new CartItem(2,"Iphone 28",2,20);
+    let items = [cartItem1, cartItem2];
+    let cart = new Cart(items);
+    let totalPriceExpected = 50;
+
+    //when
+    //we call the property directly in assertion below
+
+    //then
+    expect(totalPriceExpected).toEqual(cart.totalPrice);
 })
 
 test('getTotalCart_EmptyCart_ThrowException', () => {
@@ -31,8 +60,9 @@ test('getTotalCart_EmptyCart_ThrowException', () => {
     let cart = new Cart(null);
 
     //when
-    expect(() => cart.TotalPrice).toThrow(EmptyCartException);
+    expect(() => cart.totalPrice).toThrow(EmptyCartException);
 
     //then
     //Exception is thrown
 })
+

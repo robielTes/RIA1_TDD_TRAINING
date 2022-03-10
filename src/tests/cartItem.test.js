@@ -7,7 +7,7 @@
 
 "use strict";
 
-const CartItem = require('../CartItem.js');
+const CartItem = require('../CartItem/CartItem.js');
 const InvalidArticleIdException = require('../exceptions/InvalidArticleIdException.js');
 const InvalidQuantityException = require('../exceptions/InvalidQuantityException.js');
 const InvalidPriceException = require('../exceptions/InvalidPriceException.js');

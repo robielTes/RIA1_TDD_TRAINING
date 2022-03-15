@@ -12,6 +12,7 @@
 
 const EmptyCartException = require("./EmptyCartException.js");
 const UpdateCartException = require("./UpdateCartException.js");
+const CartItemNotFoundException = require("./CartItemNotFoundException");
 
 module.exports = class Cart {
 
@@ -82,7 +83,15 @@ module.exports = class Cart {
      * @param items
      */
     updateCart(items){
-        throw new Error();
+        if(items === null){
+            throw new UpdateCartException('Add Empty Items');
+        }
+        this.#items = null || items
+
+         items.forEach(item => {
+            let index = this.#items.findIndex(x => x.articleId === item.articleId);
+            return index === -1? this.#items.push(item):this.#items[index] = item;
+        });
     }
 
     /**
@@ -90,11 +99,23 @@ module.exports = class Cart {
      * @param itemsToRemove
      */
     removeCartItem(itemsToRemove){
-        throw new Error();
+        itemsToRemove.forEach(item => {
+            let index = this.#items.findIndex(x => x.articleId === item.articleId);
+
+            if (index === -1) {
+                throw new CartItemNotFoundException('Item not found in cart');
+            } else {
+                this.#items.splice(index,1);
+            }
+        });
     }
 
     emptyCart(){
-        throw new Error();
+        if (this.#items === null){
+            throw new EmptyCartException('Cart is empty');
+        } else {
+            this.#items = null;
+        }
     }
     //endregion public methods
 
